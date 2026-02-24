@@ -1,0 +1,153 @@
+{
+	"info": {
+		"name": "Device Dashboard API",
+		"description": "API collection for device dashboard with WebSocket notifications",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Dashboard APIs",
+			"item": [
+				{
+					"name": "Get All Devices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/devices",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "devices"]
+						}
+					}
+				},
+				{
+					"name": "Get Device by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/devices/DEVICE001",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "devices", "DEVICE001"]
+						}
+					}
+				},
+				{
+					"name": "Create Device",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"deviceId\": \"DEVICE001\",\n  \"wifiStatus\": \"Connected\",\n  \"batteryLevel\": 85,\n  \"storageUsed\": \"32\",\n  \"signalStrength\": \"Strong\",\n  \"model\": \"iPhone 14\",\n  \"firmware\": \"iOS 17.1\",\n  \"imei\": \"123456789012345\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/devices",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "devices"]
+						}
+					}
+				},
+				{
+					"name": "Update Device",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"wifiStatus\": \"Disconnected\",\n  \"batteryLevel\": 45,\n  \"storageUsed\": \"28\",\n  \"signalStrength\": \"Weak\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/devices/DEVICE001",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "devices", "DEVICE001"]
+						}
+					}
+				},
+				{
+					"name": "Delete Device",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/devices/DEVICE001",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "devices", "DEVICE001"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Mobile Device APIs",
+			"item": [
+				{
+					"name": "Send Telemetry Data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"deviceId\": \"DEVICE002\",\n  \"wifiStatus\": \"Connected\",\n  \"batteryLevel\": 92,\n  \"storageUsed\": \"45\",\n  \"signalStrength\": \"Excellent\",\n  \"model\": \"Samsung Galaxy S23\",\n  \"firmware\": \"Android 14\",\n  \"imei\": \"987654321098765\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/mobile/telemetry",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["mobile", "telemetry"]
+						}
+					}
+				},
+				{
+					"name": "FCM Response Handler",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"wifiStatus\": \"Enabled\",\n  \"batteryLevel\": 78,\n  \"commandExecuted\": \"ENABLE_WIFI\",\n  \"timestamp\": \"2024-01-15T10:30:00Z\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/mobile/fcm-response/DEVICE002",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["mobile", "fcm-response", "DEVICE002"]
+						}
+					}
+				}
+			]
+		}
+	]
+}
